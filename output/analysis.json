@@ -1,40 +1,171 @@
 {
-    "exam_id": "EXAM20260827040523757621",
+    "exam_id": "EXAM20260827045516692435",
     "exam": "Python Fundamentals",
     "module": "Python",
-    "students": 1,
+    "students": 3,
     "questions": 5,
-    "reliability": null,
+    "reliability": 0.5556,
     "recommendation_note": "Prototype recommendation only. Final item decisions remain with the teacher. Thresholds are defined in analysis.py and are not institutional standards.",
+    "student_results": [
+        {
+            "student_name": "Juan Dela Cruz",
+            "score": 3,
+            "total_questions": 5,
+            "percentage": 60.0,
+            "timestamp": "2026-08-27T00:00:00+00:00"
+        },
+        {
+            "student_name": "Maria Santos",
+            "score": 3,
+            "total_questions": 5,
+            "percentage": 60.0,
+            "timestamp": "2026-08-27T00:00:00+00:00"
+        },
+        {
+            "student_name": "A",
+            "score": 0,
+            "total_questions": 5,
+            "percentage": 0.0,
+            "timestamp": "2026-08-27T06:03:10.514438+00:00"
+        }
+    ],
     "items": [
         {
             "question_id": "Q013",
-            "difficulty_index": 0.0,
+            "question": "Complete: name = \"Ada\"; print(______)",
+            "module": "Python",
+            "question_type": "Programming",
+            "correct_answer": "name",
+            "total_responses": 3,
+            "number_correct": 1,
+            "number_wrong": 2,
+            "difficulty_index": 0.3333,
             "discrimination_index": null,
-            "recommendation": "Review"
-        },
-        {
-            "question_id": "Q014",
-            "difficulty_index": 0.0,
-            "discrimination_index": null,
-            "recommendation": "Review"
-        },
-        {
-            "question_id": "Q015",
-            "difficulty_index": 0.0,
-            "discrimination_index": null,
-            "recommendation": "Review"
-        },
-        {
-            "question_id": "Q011",
-            "difficulty_index": 0.0,
-            "discrimination_index": null,
+            "students_wrong": [
+                {
+                    "student_name": "Maria Santos",
+                    "student_answer": "wrong",
+                    "score": 3,
+                    "total_questions": 5,
+                    "percentage": 60.0
+                },
+                {
+                    "student_name": "A",
+                    "student_answer": "A",
+                    "score": 0,
+                    "total_questions": 5,
+                    "percentage": 0.0
+                }
+            ],
             "recommendation": "Review"
         },
         {
             "question_id": "Q003",
-            "difficulty_index": 0.0,
+            "question": "Complete the code: print(______)",
+            "module": "Python",
+            "question_type": "Programming",
+            "correct_answer": "\"Hello\"",
+            "total_responses": 3,
+            "number_correct": 2,
+            "number_wrong": 1,
+            "difficulty_index": 0.6667,
             "discrimination_index": null,
+            "students_wrong": [
+                {
+                    "student_name": "A",
+                    "student_answer": "A",
+                    "score": 0,
+                    "total_questions": 5,
+                    "percentage": 0.0
+                }
+            ],
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q015",
+            "question": "The function used to find the length of a sequence is ______.",
+            "module": "Python",
+            "question_type": "FillBlank",
+            "correct_answer": "len",
+            "total_responses": 3,
+            "number_correct": 1,
+            "number_wrong": 2,
+            "difficulty_index": 0.3333,
+            "discrimination_index": null,
+            "students_wrong": [
+                {
+                    "student_name": "Juan Dela Cruz",
+                    "student_answer": "wrong",
+                    "score": 3,
+                    "total_questions": 5,
+                    "percentage": 60.0
+                },
+                {
+                    "student_name": "A",
+                    "student_answer": "A",
+                    "score": 0,
+                    "total_questions": 5,
+                    "percentage": 0.0
+                }
+            ],
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q014",
+            "question": "Which symbol starts a Python comment?",
+            "module": "Python",
+            "question_type": "MCQ",
+            "correct_answer": "B",
+            "total_responses": 3,
+            "number_correct": 1,
+            "number_wrong": 2,
+            "difficulty_index": 0.3333,
+            "discrimination_index": null,
+            "students_wrong": [
+                {
+                    "student_name": "Maria Santos",
+                    "student_answer": "wrong",
+                    "score": 3,
+                    "total_questions": 5,
+                    "percentage": 60.0
+                },
+                {
+                    "student_name": "A",
+                    "student_answer": "A",
+                    "score": 0,
+                    "total_questions": 5,
+                    "percentage": 0.0
+                }
+            ],
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q005",
+            "question": "Which keyword defines a function?",
+            "module": "Python",
+            "question_type": "MCQ",
+            "correct_answer": "B",
+            "total_responses": 3,
+            "number_correct": 1,
+            "number_wrong": 2,
+            "difficulty_index": 0.3333,
+            "discrimination_index": null,
+            "students_wrong": [
+                {
+                    "student_name": "Juan Dela Cruz",
+                    "student_answer": "wrong",
+                    "score": 3,
+                    "total_questions": 5,
+                    "percentage": 60.0
+                },
+                {
+                    "student_name": "A",
+                    "student_answer": "A",
+                    "score": 0,
+                    "total_questions": 5,
+                    "percentage": 0.0
+                }
+            ],
             "recommendation": "Review"
         }
     ]

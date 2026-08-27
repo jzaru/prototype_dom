@@ -5,6 +5,7 @@ from statistics import mean
 
 from config import ANALYSIS_JSON
 from exam import load_exams, load_results
+from questions import load_questions
 
 
 # Prototype thresholds only; they are not institutional standards.
@@ -100,6 +101,23 @@ def recommendation(difficulty, discrimination):
     return "Review"
 
 
+def _student_name_and_score_by_result(results):
+    summary = {}
+    for response in results:
+        result_id = response.get("result_id")
+        if not result_id:
+            continue
+        if result_id not in summary:
+            summary[result_id] = {
+                "student_name": response.get("student_name", "Unknown"),
+                "score": response.get("score", 0),
+                "total_questions": response.get("total_questions", 0),
+                "percentage": response.get("percentage", 0.0),
+                "timestamp": response.get("timestamp"),
+            }
+    return summary
+
+
 def analyze_exam(exam_id=None):
     exams = load_exams()
     results = load_results()
@@ -129,23 +147,61 @@ def analyze_exam(exam_id=None):
         for result_id, item_values in by_student.items()
     }
 
+    student_score_map = _student_name_and_score_by_result(exam_results)
+    student_results = []
+    for result_id in result_ids:
+        summary = student_score_map.get(result_id, {})
+        student_results.append({
+            "student_name": summary.get("student_name", "Unknown"),
+            "score": summary.get("score", 0),
+            "total_questions": summary.get("total_questions", 0),
+            "percentage": float(summary.get("percentage", 0.0)),
+            "timestamp": summary.get("timestamp"),
+        })
+    student_results.sort(key=lambda item: (-item["score"], item["student_name"]))
+
+    question_map = {q["id"]: q for q in load_questions()}
     question_ids = exam["question_ids"]
     items = []
 
     for question_id in question_ids:
-        responses = {
-            result_id: answers.get(question_id, 0)
-            for result_id, answers in by_student.items()
-        }
-        correct = sum(responses.values())
-        total = len(responses)
-        difficulty = correct / total if total else None
-        discrimination = discrimination_index(responses, student_totals, len(result_ids))
+        item_responses = [r for r in exam_results if r["question_id"] == question_id]
+        total = len(item_responses)
+        number_correct = sum(1 for r in item_responses if r.get("is_correct") is True)
+        number_wrong = total - number_correct
+        difficulty = number_correct / total if total else None
+        discrimination = discrimination_index(
+            {result_id: by_student.get(result_id, {}).get(question_id, 0) for result_id in result_ids},
+            student_totals,
+            len(result_ids),
+        )
 
+        wrong_students = []
+        for response in item_responses:
+            if response.get("is_correct"):
+                continue
+            student_summary = student_score_map.get(response.get("result_id"), {})
+            wrong_students.append({
+                "student_name": response.get("student_name", "Unknown"),
+                "student_answer": response.get("student_answer", ""),
+                "score": student_summary.get("score", 0),
+                "total_questions": student_summary.get("total_questions", 0),
+                "percentage": float(student_summary.get("percentage", 0.0)),
+            })
+
+        question = question_map.get(question_id, {})
         items.append({
             "question_id": question_id,
+            "question": question.get("question", ""),
+            "module": question.get("module", ""),
+            "question_type": question.get("type", ""),
+            "correct_answer": question.get("answer", ""),
+            "total_responses": total,
+            "number_correct": number_correct,
+            "number_wrong": number_wrong,
             "difficulty_index": round(difficulty, 4) if difficulty is not None else None,
             "discrimination_index": round(discrimination, 4) if discrimination is not None else None,
+            "students_wrong": wrong_students,
             "recommendation": recommendation(difficulty, discrimination) if difficulty is not None else "Review",
         })
 
@@ -166,6 +222,7 @@ def analyze_exam(exam_id=None):
             "Prototype recommendation only. Final item decisions remain with the teacher. "
             "Thresholds are defined in analysis.py and are not institutional standards."
         ),
+        "student_results": student_results,
         "items": items,
     }
 

@@ -92,6 +92,26 @@ def activate_exam(exam_id):
     return found
 
 
+def inactivate_exam(exam_id):
+    exams = load_exams()
+    found = None
+    for exam in exams:
+        if exam["id"] == exam_id:
+            found = exam
+            break
+
+    if found is None:
+        raise ValueError("Examination not found.")
+
+    for exam in exams:
+        if exam["id"] == exam_id:
+            exam["active"] = False
+            break
+
+    save_exams(exams)
+    return found
+
+
 def get_active_exam():
     for exam in load_exams():
         if exam.get("active"):
@@ -185,6 +205,9 @@ def take_exam(exam, questions, student_name):
             "exam_id": exam["id"],
             "exam_name": exam["name"],
             "timestamp": timestamp,
+            "score": correct_count,
+            "total_questions": total,
+            "percentage": percentage,
         })
 
     results = load_results()
