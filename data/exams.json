@@ -1,0 +1,17 @@
+[
+    {
+        "id": "EXAM20260827040523757621",
+        "name": "Python Fundamentals",
+        "module": "Python",
+        "question_ids": [
+            "Q013",
+            "Q014",
+            "Q015",
+            "Q011",
+            "Q003"
+        ],
+        "randomize": true,
+        "active": true,
+        "created_at": "2026-08-27T04:05:23.757642+00:00"
+    }
+]

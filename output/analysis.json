@@ -1,0 +1,41 @@
+{
+    "exam_id": "EXAM20260827040523757621",
+    "exam": "Python Fundamentals",
+    "module": "Python",
+    "students": 1,
+    "questions": 5,
+    "reliability": null,
+    "recommendation_note": "Prototype recommendation only. Final item decisions remain with the teacher. Thresholds are defined in analysis.py and are not institutional standards.",
+    "items": [
+        {
+            "question_id": "Q013",
+            "difficulty_index": 0.0,
+            "discrimination_index": null,
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q014",
+            "difficulty_index": 0.0,
+            "discrimination_index": null,
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q015",
+            "difficulty_index": 0.0,
+            "discrimination_index": null,
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q011",
+            "difficulty_index": 0.0,
+            "discrimination_index": null,
+            "recommendation": "Review"
+        },
+        {
+            "question_id": "Q003",
+            "difficulty_index": 0.0,
+            "discrimination_index": null,
+            "recommendation": "Review"
+        }
+    ]
+}
